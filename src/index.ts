@@ -3,12 +3,17 @@ import inquirer from 'inquirer'
 
 const app = new Command()
 
-const receiver = () => {
+const receiver = (): void => {
   inquirer.prompt([
     { type: 'input', name: 'name', message: 'Your Name' }
-  ]).then(answers => {
-    console.log(`Hello ${answers.name}`)
-  })
+  ])
+    .then(answers => {
+      const name: string = answers.name
+      console.log(`Hello ${name}`)
+    })
+    .catch(error => {
+      console.log(error)
+    })
 }
 
 app
